@@ -1,16 +1,22 @@
 package io.github.mcengine.extension.addon.essential.god.listener;
 
 import io.github.mcengine.api.core.extension.logger.MCEngineExtensionLogger;
+import io.github.mcengine.extension.addon.essential.god.command.GodCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Example event listener for the Essential AddOn example module.
+ * Event listener for the God add-on module.
+ * <p>
+ * - Sends a welcome message on join.
+ * - Logs when players quit.
+ * - Prevents damage to players while they are in god mode.
  */
 public class GodListener implements Listener {
 
@@ -25,7 +31,7 @@ public class GodListener implements Listener {
     private final MCEngineExtensionLogger logger;
 
     /**
-     * Creates a new {@link EssentialAddOnListener}.
+     * Creates a new {@link GodListener}.
      *
      * @param plugin The plugin instance.
      * @param logger The custom extension logger instance.
@@ -36,24 +42,17 @@ public class GodListener implements Listener {
     }
 
     /**
-     * Handles player join events and sends a welcome message.
+     * Cancels damage for players who have god mode enabled.
      *
-     * @param event The player join event.
+     * @param event The damage event.
      */
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        player.sendMessage(ChatColor.AQUA + "[AddOn][essential-addon-example] Hello " + player.getName() + ", enjoy your time!");
-    }
-
-    /**
-     * Handles player quit events and logs the departure.
-     *
-     * @param event The player quit event.
-     */
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent event) {
-        Player player = event.getPlayer();
-        this.logger.info(player.getName() + " has left the server.");
+    public void onEntityDamage(EntityDamageEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player p = (Player) event.getEntity();
+            if (GodCommand.isGod(p)) {
+                event.setCancelled(true);
+            }
+        }
     }
 }

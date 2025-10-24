@@ -19,9 +19,10 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 /**
- * Main class for the Essential AddOn example module.
+ * Main class for the Essential AddOn "God" module.
  * <p>
- * Registers the {@code /essentialaddonexample} command and related event listeners.
+ * Registers the {@code /god} command and related event listeners.
+ * This class is instantiated and invoked by the MCEngine core plugin.
  */
 public class God implements IMCEngineEssentialAddOn {
 
@@ -31,7 +32,7 @@ public class God implements IMCEngineEssentialAddOn {
     private MCEngineExtensionLogger logger;
 
     /**
-     * Initializes the Essential AddOn example module.
+     * Initializes the God add-on module.
      * Called automatically by the MCEngine core plugin.
      *
      * @param plugin The Bukkit plugin instance.
@@ -39,7 +40,7 @@ public class God implements IMCEngineEssentialAddOn {
     @Override
     public void onLoad(Plugin plugin) {
         // Initialize contextual logger once and keep it for later use.
-        this.logger = new MCEngineExtensionLogger(plugin, "AddOn", "EssentialExampleAddOn");
+        this.logger = new MCEngineExtensionLogger(plugin, "AddOn", "MCEngineGod");
 
         try {
             // Register event listener
@@ -51,16 +52,16 @@ public class God implements IMCEngineEssentialAddOn {
             commandMapField.setAccessible(true);
             CommandMap commandMap = (CommandMap) commandMapField.get(Bukkit.getServer());
 
-            // Define the /essentialaddonexample command
-            Command essentialAddOnExampleCommand = new Command("essentialaddonexample") {
+            // Define the /god command
+            Command godCommand = new Command("god") {
 
                 /**
-                 * Handles command execution for /essentialaddonexample.
+                 * Command handler for the {@code /god} command.
                  */
                 private final GodCommand handler = new GodCommand();
 
                 /**
-                 * Handles tab-completion for /essentialaddonexample.
+                 * Tab-completer for the {@code /god} command.
                  */
                 private final GodTabCompleter completer = new GodTabCompleter();
 
@@ -75,21 +76,21 @@ public class God implements IMCEngineEssentialAddOn {
                 }
             };
 
-            essentialAddOnExampleCommand.setDescription("Essential AddOn example command.");
-            essentialAddOnExampleCommand.setUsage("/essentialaddonexample");
+            godCommand.setDescription("Toggle god mode for yourself or another player.");
+            godCommand.setUsage("/god [player]");
 
-            // Dynamically register the /essentialaddonexample command
-            commandMap.register(plugin.getName().toLowerCase(), essentialAddOnExampleCommand);
+            // Dynamically register the /god command
+            commandMap.register(plugin.getName().toLowerCase(), godCommand);
 
             this.logger.info("Enabled successfully.");
         } catch (Exception e) {
-            this.logger.warning("Failed to initialize ExampleEssentialAddOn: " + e.getMessage());
+            this.logger.warning("Failed to initialize GodAddOn: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     /**
-     * Called when the Essential AddOn example module is disabled/unloaded.
+     * Called when the God add-on module is disabled/unloaded.
      *
      * @param plugin The Bukkit plugin instance.
      */
@@ -107,6 +108,6 @@ public class God implements IMCEngineEssentialAddOn {
      */
     @Override
     public void setId(String id) {
-        MCEngineCoreApi.setId("mcengine-essential-addon-example");
+        MCEngineCoreApi.setId("mcengine-essential-addon-god");
     }
 }
