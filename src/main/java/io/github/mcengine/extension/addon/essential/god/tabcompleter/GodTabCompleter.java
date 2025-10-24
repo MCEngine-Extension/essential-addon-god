@@ -9,12 +9,14 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Tab-completer for the {@code /essentialaddonexample} command.
+ * Tab-completer for the {@code /god} command.
+ * <p>
+ * Provides basic suggestions for the first argument (subcommands or actions).
  */
 public class GodTabCompleter implements TabCompleter {
 
     /**
-     * Provides tab-completion suggestions for {@code /essentialaddonexample}.
+     * Provides tab-completion suggestions for {@code /god}.
      *
      * @param sender  The source of the command.
      * @param command The command object.
@@ -25,7 +27,7 @@ public class GodTabCompleter implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
-            return Arrays.asList("start", "stop", "status");
+            return Arrays.asList("enable", "disable", "toggle", "status");
         }
         return Collections.emptyList();
     }

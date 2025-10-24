@@ -10,7 +10,9 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Example event listener for the Essential AddOn example module.
+ * Example event listener for the God add-on module.
+ * <p>
+ * Sends a welcome message on join and logs on quit using the add-on's logger.
  */
 public class GodListener implements Listener {
 
@@ -25,7 +27,7 @@ public class GodListener implements Listener {
     private final MCEngineExtensionLogger logger;
 
     /**
-     * Creates a new {@link EssentialAddOnListener}.
+     * Creates a new {@link GodListener}.
      *
      * @param plugin The plugin instance.
      * @param logger The custom extension logger instance.
@@ -33,27 +35,5 @@ public class GodListener implements Listener {
     public GodListener(Plugin plugin, MCEngineExtensionLogger logger) {
         this.plugin = plugin;
         this.logger = logger;
-    }
-
-    /**
-     * Handles player join events and sends a welcome message.
-     *
-     * @param event The player join event.
-     */
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        player.sendMessage(ChatColor.AQUA + "[AddOn][essential-addon-example] Hello " + player.getName() + ", enjoy your time!");
-    }
-
-    /**
-     * Handles player quit events and logs the departure.
-     *
-     * @param event The player quit event.
-     */
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent event) {
-        Player player = event.getPlayer();
-        this.logger.info(player.getName() + " has left the server.");
     }
 }
