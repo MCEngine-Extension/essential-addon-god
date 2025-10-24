@@ -76,7 +76,7 @@ public class God implements IMCEngineEssentialAddOn {
                 }
             };
 
-            godCommand.setDescription("Toggle god mode for a player or yourself.");
+            godCommand.setDescription("Toggle god mode for yourself or another player.");
             godCommand.setUsage("/god [player]");
 
             // Dynamically register the /god command

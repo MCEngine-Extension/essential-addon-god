@@ -1,17 +1,22 @@
 package io.github.mcengine.extension.addon.essential.god.tabcompleter;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
  * Tab-completer for the {@code /god} command.
  * <p>
- * Provides basic suggestions for the first argument (subcommands or actions).
+ * Suggestions:
+ * <ul>
+ *     <li>When no arguments: suggest online player names (for the first argument)</li>
+ *     <li>Otherwise: no suggestions</li>
+ * </ul>
  */
 public class GodTabCompleter implements TabCompleter {
 
@@ -26,8 +31,11 @@ public class GodTabCompleter implements TabCompleter {
      */
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        // Suggest online player names for the first argument.
         if (args.length == 1) {
-            return Arrays.asList("enable", "disable", "toggle", "status");
+            List<String> names = new ArrayList<>();
+            Bukkit.getOnlinePlayers().forEach(p -> names.add(p.getName()));
+            return names;
         }
         return Collections.emptyList();
     }
