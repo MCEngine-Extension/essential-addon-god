@@ -30,7 +30,7 @@ public class GodListener implements Listener {
      * @param plugin The plugin instance.
      * @param logger The custom extension logger instance.
      */
-    public EssentialAddOnListener(Plugin plugin, MCEngineExtensionLogger logger) {
+    public GodListener(Plugin plugin, MCEngineExtensionLogger logger) {
         this.plugin = plugin;
         this.logger = logger;
     }
