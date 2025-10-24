@@ -1,4 +1,4 @@
-package io.github.mcengine.extension.addon.essential.example.tabcompleter;
+package io.github.mcengine.extension.addon.essential.god.tabcompleter;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Tab-completer for the {@code /essentialaddonexample} command.
  */
-public class EssentialAddOnTabCompleter implements TabCompleter {
+public class GodTabCompleter implements TabCompleter {
 
     /**
      * Provides tab-completion suggestions for {@code /essentialaddonexample}.

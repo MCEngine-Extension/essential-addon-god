@@ -1,4 +1,4 @@
-package io.github.mcengine.extension.addon.essential.example.command;
+package io.github.mcengine.extension.addon.essential.god.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 /**
  * Handles the {@code /essentialaddonexample} command logic.
  */
-public class EssentialAddOnCommand implements CommandExecutor {
+public class GodCommand implements CommandExecutor {
 
     /**
      * Executes the {@code /essentialaddonexample} command.

@@ -1,12 +1,12 @@
-package io.github.mcengine.extension.addon.essential.example;
+package io.github.mcengine.extension.addon.essential.god;
 
 import io.github.mcengine.api.core.MCEngineCoreApi;
 import io.github.mcengine.api.core.extension.logger.MCEngineExtensionLogger;
 import io.github.mcengine.api.essential.extension.addon.IMCEngineEssentialAddOn;
 
-import io.github.mcengine.extension.addon.essential.example.command.EssentialAddOnCommand;
-import io.github.mcengine.extension.addon.essential.example.listener.EssentialAddOnListener;
-import io.github.mcengine.extension.addon.essential.example.tabcompleter.EssentialAddOnTabCompleter;
+import io.github.mcengine.extension.addon.essential.god.command.GodCommand;
+import io.github.mcengine.extension.addon.essential.god.listener.GodListener;
+import io.github.mcengine.extension.addon.essential.god.tabcompleter.GodTabCompleter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -23,7 +23,7 @@ import java.util.List;
  * <p>
  * Registers the {@code /essentialaddonexample} command and related event listeners.
  */
-public class ExampleEssentialAddOn implements IMCEngineEssentialAddOn {
+public class God implements IMCEngineEssentialAddOn {
 
     /**
      * Custom extension logger for this module, with contextual labeling.
@@ -44,7 +44,7 @@ public class ExampleEssentialAddOn implements IMCEngineEssentialAddOn {
         try {
             // Register event listener
             PluginManager pluginManager = Bukkit.getPluginManager();
-            pluginManager.registerEvents(new EssentialAddOnListener(plugin, this.logger), plugin);
+            pluginManager.registerEvents(new GodListener(plugin, this.logger), plugin);
 
             // Reflectively access Bukkit's CommandMap
             Field commandMapField = Bukkit.getServer().getClass().getDeclaredField("commandMap");
@@ -57,12 +57,12 @@ public class ExampleEssentialAddOn implements IMCEngineEssentialAddOn {
                 /**
                  * Handles command execution for /essentialaddonexample.
                  */
-                private final EssentialAddOnCommand handler = new EssentialAddOnCommand();
+                private final GodCommand handler = new GodCommand();
 
                 /**
                  * Handles tab-completion for /essentialaddonexample.
                  */
-                private final EssentialAddOnTabCompleter completer = new EssentialAddOnTabCompleter();
+                private final GodTabCompleter completer = new GodTabCompleter();
 
                 @Override
                 public boolean execute(CommandSender sender, String label, String[] args) {
