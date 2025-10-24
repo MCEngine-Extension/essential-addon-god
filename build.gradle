@@ -22,10 +22,10 @@ ext {
 
     // Repository
     repository_id = System.getenv('REPOSITORY_ID')
-    repository_name = System.getenv('REPOSITORY_NAME') ?: 'essential-addon-example'
+    repository_name = System.getenv('REPOSITORY_NAME') ?: 'essential-addon-god'
     repository_token = System.getenv('REPOSITORY_TOKEN')
 
-    jarName = System.getenv('PROJECT_NAME') ?: 'EssentialExampleAddOn'
+    jarName = System.getenv('PROJECT_NAME') ?: 'EssentialGod'
 }
 
 // Set project version using a property
@@ -44,8 +44,8 @@ allprojects {
                 name = repoName
                 url = uri(repoUrl)
                 credentials {
-                    username = project.user_git_name
-                    password = project.user_github_token ?: project.repository_token ?: project.organization_token
+                    username = user_github_token ?: user_git_name
+                    password = user_github_token ?: repository_token ?: organization_token
                 }
             }
         }
@@ -80,7 +80,7 @@ dependencies {
 
 shadowJar {
     archiveClassifier = null
-    archiveBaseName = project.jarName
+    archiveBaseName = jarName
 }
 
 tasks.named('jar').configure {
