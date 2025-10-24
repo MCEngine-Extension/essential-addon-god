@@ -44,7 +44,7 @@ public class God implements IMCEngineEssentialAddOn {
         try {
             // Register event listener
             PluginManager pluginManager = Bukkit.getPluginManager();
-            pluginManager.registerEvents(new EssentialAddOnListener(plugin, this.logger), plugin);
+            pluginManager.registerEvents(new GodListener(plugin, this.logger), plugin);
 
             // Reflectively access Bukkit's CommandMap
             Field commandMapField = Bukkit.getServer().getClass().getDeclaredField("commandMap");
@@ -57,12 +57,12 @@ public class God implements IMCEngineEssentialAddOn {
                 /**
                  * Handles command execution for /essentialaddonexample.
                  */
-                private final EssentialAddOnCommand handler = new EssentialAddOnCommand();
+                private final GodCommand handler = new GodCommand();
 
                 /**
                  * Handles tab-completion for /essentialaddonexample.
                  */
-                private final EssentialAddOnTabCompleter completer = new EssentialAddOnTabCompleter();
+                private final GodTabCompleter completer = new GodTabCompleter();
 
                 @Override
                 public boolean execute(CommandSender sender, String label, String[] args) {
