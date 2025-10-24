@@ -1,12 +1,12 @@
-package io.github.mcengine.extension.addon.essential.example;
+package io.github.mcengine.extension.addon.essential.god;
 
 import io.github.mcengine.api.core.MCEngineCoreApi;
 import io.github.mcengine.api.core.extension.logger.MCEngineExtensionLogger;
 import io.github.mcengine.api.essential.extension.addon.IMCEngineEssentialAddOn;
 
-import io.github.mcengine.extension.addon.essential.example.command.EssentialAddOnCommand;
-import io.github.mcengine.extension.addon.essential.example.listener.EssentialAddOnListener;
-import io.github.mcengine.extension.addon.essential.example.tabcompleter.EssentialAddOnTabCompleter;
+import io.github.mcengine.extension.addon.essential.god.command.GodCommand;
+import io.github.mcengine.extension.addon.essential.god.listener.GodListener;
+import io.github.mcengine.extension.addon.essential.god.tabcompleter.GodTabCompleter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -23,7 +23,7 @@ import java.util.List;
  * <p>
  * Registers the {@code /essentialaddonexample} command and related event listeners.
  */
-public class ExampleEssentialAddOn implements IMCEngineEssentialAddOn {
+public class God implements IMCEngineEssentialAddOn {
 
     /**
      * Custom extension logger for this module, with contextual labeling.

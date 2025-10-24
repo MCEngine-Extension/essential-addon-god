@@ -1,4 +1,4 @@
-package io.github.mcengine.extension.addon.essential.example.listener;
+package io.github.mcengine.extension.addon.essential.god.listener;
 
 import io.github.mcengine.api.core.extension.logger.MCEngineExtensionLogger;
 import org.bukkit.ChatColor;
@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 /**
  * Example event listener for the Essential AddOn example module.
  */
-public class EssentialAddOnListener implements Listener {
+public class GodListener implements Listener {
 
     /**
      * The plugin instance used by this listener.
